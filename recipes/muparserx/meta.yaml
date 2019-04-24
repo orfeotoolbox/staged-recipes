@@ -5,9 +5,6 @@ package:
   version: {{ version }}
 
 source:
-  #git_url: https://github.com/beltoforion/muparserx.git
-  #git_rev: v{{ version }}
-  fn: v{{ version }}.zip
   url: https://github.com/beltoforion/muparserx/archive/v{{ version }}.zip
   sha256: 9fe55c43c2298875fdda9da49c273bdfb42245cf2cb2ad77d5cb40eaf7a83f09
 
