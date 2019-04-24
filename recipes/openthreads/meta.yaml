@@ -1,0 +1,41 @@
+{% set version = "3.6.3" %}
+
+package:
+  name: openscenegraph
+  version: {{ version }}
+
+source:
+  - url: https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-{{ version }}.zip
+    sha256: d8f237e76393e4c749b25321d3735d2c4e5b8c7076f9826213eb0cf8eeca0031
+  - path: CMakeLists.txt
+
+build:
+  number: 1000
+
+requirements:
+  build:
+    - cmake
+    - ninja
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    #- {{ cdt('mesa-libgl-devel') }}  # [linux]
+    #- {{ cdt('mesa-dri-drivers') }}  # [linux]
+    #- {{ cdt('libx11-devel') }}        # [linux]
+
+test:
+  commands:
+    - test -f ${PREFIX}/include/OpenThreads/Thread  # [unix]
+    - if not exist %PREFIX%\\Library\\include\\Thread exit 1  # [win]
+    - conda inspect linkages -p ${PREFIX} OpenThreads  # [not win]
+    - conda inspect objects -p ${PREFIX} OpenThreads  # [osx]
+
+about:
+  home: http://www.openscenegraph.org
+  license: OpenSceneGraph Public License
+  license_file: LICENSE.txt
+  summary: A C++ open-source 3D graphics application programming interface
+
+extra:
+  recipe-maintainers:
+    - CNES
+
