@@ -1,7 +1,7 @@
 {% set version = "3.6.3" %}
 
 package:
-  name: openscenegraph
+  name: openthreads
   version: {{ version }}
 
 source:
