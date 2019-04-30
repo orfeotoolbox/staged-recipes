@@ -23,8 +23,8 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/tinyxml.h  # [unix]
-    - if not exist %PREFIX%\\Library\\tinyxml.h exit 1  # [win]
+    - test -f ${PREFIX}/include/tinyxml.h  # [unix]
+    - if not exist %PREFIX%\\Library\\include\\tinyxml.h exit 1  # [win]
     - conda inspect linkages -p ${PREFIX} tinyxml  # [not win]
     - conda inspect objects -p ${PREFIX} tinyxml  # [osx]
 
