@@ -1,0 +1,40 @@
+{% set version = "2.6.2" %}
+{% set version_under = version.replace(".", "_") %}
+
+package:
+  name: tinyxml
+  version: {{ version }}
+
+source:
+  - url: https://sourceforge.net/projects/tinyxml/files/tinyxml/{{ version }}/tinyxml_{{ version_under }}.tar.gz
+    sha1: cba3f50dd657cb1434674a03b21394df9913d764
+    md5: c1b864c96804a10526540c664ade67f0
+  - path: CMakeLists.txt
+
+build:
+  number: 1000
+
+requirements:
+  build:
+    - cmake
+    - ninja
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+
+test:
+  commands:
+    - test -f ${PREFIX}/tinyxml.h  # [unix]
+    - if not exist %PREFIX%\\Library\\tinyxml.h exit 1  # [win]
+    - conda inspect linkages -p ${PREFIX} tinyxml  # [not win]
+    - conda inspect objects -p ${PREFIX} tinyxml  # [osx]
+
+about:
+  home: http://www.grinninglizard.com/tinyxml/
+  license: ZLib license
+  license_file: readme.txt
+  summary: A simple, small, minimal, C++ XML parser
+
+extra:
+  recipe-maintainers:
+    - CNES
+
