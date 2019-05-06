@@ -18,9 +18,6 @@ requirements:
     - ninja
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    #- {{ cdt('mesa-libgl-devel') }}  # [linux]
-    #- {{ cdt('mesa-dri-drivers') }}  # [linux]
-    #- {{ cdt('libx11-devel') }}        # [linux]
 
 test:
   commands:
