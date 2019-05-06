@@ -23,8 +23,8 @@ test:
   commands:
     - test -f ${PREFIX}/include/OpenThreads/Thread  # [unix]
     - if not exist %PREFIX%\\Library\\include\\Thread exit 1  # [win]
-    - conda inspect linkages -p ${PREFIX} OpenThreads  # [not win]
-    - conda inspect objects -p ${PREFIX} OpenThreads  # [osx]
+    #- conda inspect linkages -p ${PREFIX} OpenThreads  # [not win]
+    #- conda inspect objects -p ${PREFIX} OpenThreads  # [osx]
 
 about:
   home: http://www.openscenegraph.org
