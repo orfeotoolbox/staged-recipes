@@ -1,0 +1,42 @@
+{% set version = "4.0.1" %}
+
+package:
+  name: shark
+  version: {{ version }}
+
+source:
+  url: https://github.com/Shark-ML/Shark/archive/v{{ version }}.zip
+  sha256: b442d641d84cc5c7051fe9d79e116af33288b8816d1a97b96f774da3a704da6e
+  patches:
+    - patches/shark-1-disable-hdf5-all.diff
+    - patches/shark-2-ext-num-literals-all.diff
+
+build:
+  number: 1000
+
+requirements:
+  build:
+    - cmake
+    - ninja
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - boost
+
+test:
+  commands:
+    - test -f ${PREFIX}/include/shark/Core/Shark.h  # [unix]
+    - if not exist %PREFIX%\\Library\\include\\shark\\Core\\Shark.h exit 1  # [win]
+    - conda inspect linkages -p ${PREFIX} shark  # [not win]
+    - conda inspect objects -p ${PREFIX} shark  # [osx]
+
+about:
+  home: http://www.shark-ml.org/
+  license: LGPL-3.0
+  license_file: COPYING
+  summary: A C++ machine learning library
+
+extra:
+  recipe-maintainers:
+    - CNES
+
