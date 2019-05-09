@@ -1,0 +1,58 @@
+{% set version = "1.8.20" %}
+
+package:
+  name: ossim
+  version: {{ version }}
+
+source:
+  - url: http://download.osgeo.org/ossim/source/ossim-{{ version }}/ossim-{{ version }}-3.tar.gz
+    md5: eb2265db0d4d9201e255b92317121cfd
+    sha256: d7981d0d7e84bdbc26d5bda9e5b80c583d806164e4d6e5fab276c9255a2b407c
+  - path: CMakeLists.txt
+  - patches:
+    - patches/ossim-1-skip-svn-revision-all.diff  
+    - patches/ossim-2-rpathfix-macx.diff    
+    - patches/ossim-3-fixes-win.diff  
+    - patches/ossim-4-trac_2354-all.diff  
+    - patches/ossim-5-compat_geos36-all.diff  
+    - patches/ossim-6-clang7-all.diff
+    - patches/ossim-7-find-freetype.diff
+    - patches/ossim-8-find-geos.diff
+    - patches/ossim-9-find-jpeg.diff
+    - patches/ossim-10-find-tiff.diff
+
+build:
+  number: 1000
+
+requirements:
+  build:
+    - cmake
+    - ninja
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - freetype      
+    - geotiff
+    - geos
+    - jpeg
+    - libtiff
+    - openthreads
+    - zlib
+
+test:
+  commands:
+    - test -f ${PREFIX}/include/ossim/ossimVersion.h
+    - if not exist %PREFIX%\\Library\\include\ossim\ossimVersion.h exit 1  # [win]
+    - conda inspect linkages -p ${PREFIX} ossim  # [not win]
+    - conda inspect objects -p ${PREFIX} ossim  # [osx]
+
+about:
+  home: https://trac.osgeo.org/ossim/
+  license: MIT
+  license_file: ossim/LICENSE.txt
+  summary: a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data.
+
+extra:
+  recipe-maintainers:
+    - CNES
+

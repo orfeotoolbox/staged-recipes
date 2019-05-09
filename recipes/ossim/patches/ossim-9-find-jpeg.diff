@@ -1,0 +1,21 @@
+diff -burN ossim-1.8.20-3.orig/ossim_package_support/cmake/CMakeModules/FindJPEG.cmake ossim-1.8.20-3/ossim_package_support/cmake/CMakeModules/FindJPEG.cmake
+--- ossim-1.8.20-3.orig/ossim_package_support/cmake/CMakeModules/FindJPEG.cmake	2015-01-20 16:20:12.000000000 +0000
++++ ossim-1.8.20-3/ossim_package_support/cmake/CMakeModules/FindJPEG.cmake	2019-05-09 11:47:22.310110000 +0000
+@@ -21,6 +21,8 @@
+ #  License text for the above reference.)
+ 
+ FIND_PATH(JPEG_INCLUDE_DIR jpeglib.h
++           PATH_SUFFIXES
++             include
+            PATHS
+            ${CMAKE_INSTALL_PREFIX}/include
+            /usr/local/include
+@@ -31,6 +33,8 @@
+ # Added x86_64-linux-gnu path for Ubuntu install
+ FIND_LIBRARY(JPEG_LIBRARY
+              NAMES ${JPEG_NAMES}
++             PATH_SUFFIXES
++               lib
+              PATHS
+              ${CMAKE_INSTALL_PREFIX}/include
+              /usr/local/lib

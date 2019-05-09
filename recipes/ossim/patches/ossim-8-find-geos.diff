@@ -1,0 +1,30 @@
+diff -burN ossim-1.8.20-3.orig/ossim_package_support/cmake/CMakeModules/FindGEOS.cmake ossim-1.8.20-3/ossim_package_support/cmake/CMakeModules/FindGEOS.cmake
+--- ossim-1.8.20-3.orig/ossim_package_support/cmake/CMakeModules/FindGEOS.cmake	2015-01-20 16:20:12.000000000 +0000
++++ ossim-1.8.20-3/ossim_package_support/cmake/CMakeModules/FindGEOS.cmake	2019-05-09 11:46:06.878131000 +0000
+@@ -28,6 +28,8 @@
+ #---
+ 
+ find_path( GEOS_INCLUDE_DIR geos/geom/Geometry.h
++           PATH_SUFFIXES
++             include
+            PATHS 
+            ${CMAKE_INSTALL_PREFIX}/include
+            ${GEOS_DIR}/include
+@@ -37,6 +39,8 @@
+ 
+ # Find GEOS library:
+ find_library( GEOS_LIB NAMES geos 
++              PATH_SUFFIXES
++               lib
+               PATHS
+               ${CMAKE_INSTALL_PREFIX}/lib
+               ${GEOS_DIR}/lib
+@@ -47,6 +51,8 @@
+ 
+ # Find GEOS C library:
+ find_library( GEOS_C_LIB NAMES geos_c 
++              PATH_SUFFIXES
++               lib
+               PATHS 
+               ${CMAKE_INSTALL_PREFIX}/lib
+               ${GEOS_DIR}/lib
