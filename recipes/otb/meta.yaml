@@ -1,0 +1,115 @@
+{% set version = "6.6.1" %}
+
+package:
+  name: otb
+  version: {{ version }}
+
+source:
+  - url: https://www.orfeo-toolbox.org/packages/OTB-{{ version }}.tar.gz
+    sha256: c2db318e00fdc403082c07c5a655acae7017b2fc8a2d7c35016649a0900d1676
+
+build:
+  number: 1000
+  skip: True  # [win and vc<14]
+
+requirements:
+  build:
+    - cmake
+    - ninja
+    - pkg-config >=0.21  # [not win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - boost
+    - curl
+    - expat
+    - fftw
+    - gdal=2.4.1
+    - geos
+    - geotiff
+    - gsl 
+    - hdf4
+    - hdf5
+    - itk=4.13.2
+    - jpeg
+    - libitk=4.13.2
+    - libgdal=2.4.1
+    - libkml
+    - libsvm
+    - libnetcdf
+    - libpng
+    - libtiff
+    - muparser
+    - muparserx
+    - opencv=3.4.4
+    - openjpeg
+    - openssl
+    - openthreads
+    - ossim
+    - pcre
+    - proj4
+    - shark
+    - sqlite
+    - swig
+    - tinyxml
+    - zlib
+    - python=3.6
+    - numpy
+  run:
+    - boost
+    - curl
+    - expat
+    - fftw
+    - gdal=2.4.1
+    - geos
+    - geotiff
+    - gsl 
+    - hdf4
+    - hdf5
+    - itk=4.13.2
+    - jpeg
+    - libitk=4.13.2
+    - libgdal=2.4.1
+    - libkml
+    - libsvm
+    - libnetcdf
+    - libpng
+    - libtiff
+    - muparser
+    - muparserx
+    - opencv=3.4.4
+    - openjpeg
+    - openssl
+    - openthreads
+    - ossim
+    - pcre
+    - proj4
+    - shark
+    - sqlite
+    - swig
+    - tinyxml
+    - zlib
+    - python=3.6
+    - numpy
+
+test:
+  requires:
+    - cmake
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+  files:
+    - test_data
+  commands:
+    - test -d $PREFIX/include/OTB*                        # [not win]
+    - if not exist %LIBRARY_INC%\\OTB* exit 1             # [win]
+
+about:
+  home: https://www.orfeo-toolbox.org/
+  license: Apache 2.0
+  license_file: LICENSE
+  summary: |
+    Description Orfeo Toolbox
+
+extra:
+  recipe-maintainers:
+    - CNES
