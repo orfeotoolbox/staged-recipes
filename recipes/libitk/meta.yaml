@@ -1,0 +1,58 @@
+{% set version = "4.13.2" %}
+
+package:
+  name: libitk
+  version: "{{version}}"
+
+source:
+  url: https://github.com/InsightSoftwareConsortium/ITK/archive/v{{version}}.tar.gz
+  sha256: 98c2fd826e1987d797521d83031fcaa328135daf6524f7823363d66ab288c545
+
+build:
+    number: 0
+
+requirements:
+  build:
+    - cmake    >=3.3
+    - ninja
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - expat
+    - hdf5>=1.10.4,<1.10.5.0a0                      # [not win]
+    - jpeg
+    - libtiff
+    - libpng
+    - zlib
+  run:
+    - expat
+    - hdf5>=1.10.4,<1.10.5.0a0                      # [not win]
+    - jpeg
+    - libtiff
+    - libpng
+    - zlib
+
+test:
+  requires:
+    - cmake
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+  files:
+    - example
+  commands:
+    - test -d $PREFIX/include/ITK*                        # [not win]
+    - if not exist %LIBRARY_INC%\\ITK* exit 1             # [win]
+    - itkTestDriver -- echo "Runtime ITK OK"
+    - cmake -D "CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}" ./example  # [not win]
+    - cmake --build . --config Release                                  # [not win]
+
+about:
+  home: http://www.itk.org
+  license: Apache 2.0
+  license_file: LICENSE
+  summary: Runtime libraries and header files for the Insight Toolkit for segmentation and registration.
+
+extra:
+    recipe-maintainers:
+      - blowekamp
+      - bluescarni
