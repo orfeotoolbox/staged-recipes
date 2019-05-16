@@ -48,7 +48,7 @@ requirements:
     - ossim
     - pcre
     - proj4
-    - shark
+    - shark=3.1.4
     - sqlite
     - swig
     - tinyxml
@@ -84,7 +84,7 @@ requirements:
     - ossim
     - pcre
     - proj4
-    - shark
+    - shark=3.1.4
     - sqlite
     - swig
     - tinyxml
