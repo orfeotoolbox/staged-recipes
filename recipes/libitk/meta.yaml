@@ -5,9 +5,11 @@ package:
   version: "{{version}}"
 
 source:
-  url: https://github.com/InsightSoftwareConsortium/ITK/archive/v{{version}}.tar.gz
-  sha256: b352060d8b7289916a3cb033dfdbcf423423ba474643b79706966e679268e3d7
-  #sha256: 98c2fd826e1987d797521d83031fcaa328135daf6524f7823363d66ab288c545
+  - url: https://github.com/InsightSoftwareConsortium/ITK/archive/v{{version}}.tar.gz
+    sha256: b352060d8b7289916a3cb033dfdbcf423423ba474643b79706966e679268e3d7
+  - patches:
+    - patches/itk-1-fftw-all.diff
+    - patches/itk-2-itktestlib-all.diff
 
 build:
     number: 0

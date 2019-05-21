@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e # Abort on error
+
 # When building 32-bits on 64-bit system this flags is not automatically set by conda-build
 if [ $ARCH == 32 -a "${OSX_ARCH:-notosx}" == "notosx" ]; then
     export CFLAGS="${CFLAGS} -m32"
@@ -7,8 +9,12 @@ if [ $ARCH == 32 -a "${OSX_ARCH:-notosx}" == "notosx" ]; then
 fi
 
 BUILD_DIR=${SRC_DIR}/build
-mkdir ${BUILD_DIR}
+[[ -d ${BUILD_DIR} ]] || mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}
+
+#Force C++14 compilation
+export CFLAGS=${CXXFLAGS//-std=c++17/-std=c++14}
+export CXXFLAGS=${CXXFLAGS//-std=c++17/-std=c++14}
 
 cmake \
     -G "Ninja" \
