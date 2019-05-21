@@ -1,12 +1,12 @@
-{% set version = "6.6.1" %}
+{% set version = "6.6.2" %}
 
 package:
   name: otb
   version: {{ version }}
 
 source:
-  - url: https://www.orfeo-toolbox.org/packages/OTB-{{ version }}.tar.gz
-    sha256: c2db318e00fdc403082c07c5a655acae7017b2fc8a2d7c35016649a0900d1676
+  git_url: https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb.git
+  git_rev: {{ version }}
 
 build:
   number: 1000
@@ -32,7 +32,7 @@ requirements:
     - hdf5
     - itk=4.13.2
     - jpeg
-    - libitk=4.13.2=hf484d3e_0
+    - libitk=4.13.1
     - libgdal=2.4.1
     - libkml
     - libsvm
@@ -68,7 +68,7 @@ requirements:
     - hdf5
     - itk=4.13.2
     - jpeg
-    - libitk=4.13.2=hf484d3e_0
+    - libitk=4.13.1
     - libgdal=2.4.1
     - libkml
     - libsvm
