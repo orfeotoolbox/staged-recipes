@@ -7,7 +7,8 @@ set -e # Abort on error
 cd build
 
 #Force C++14 compilation
-export CXXFLAGS=${CXXFLAGS//c++17/c++14}
+export CFLAGS=${CXXFLAGS//-std=c++17/-std=c++14}
+export CXXFLAGS=${CXXFLAGS//-std=c++17/-std=c++14}
 
 if [[ $target_platform =~ linux.* ]]; then
     export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
