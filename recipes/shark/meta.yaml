@@ -21,7 +21,9 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - blas=2.10=mkl
     - boost
+    - openmp 
 
 test:
   commands:

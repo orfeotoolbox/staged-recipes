@@ -43,6 +43,7 @@ requirements:
     - muparserx
     - opencv=3.4.4
     - openjpeg
+    - openmp
     - openssl
     - openthreads
     - ossim
@@ -79,6 +80,7 @@ requirements:
     - muparserx
     - opencv=3.4.4
     - openjpeg
+    - openmp
     - openssl
     - openthreads
     - ossim
