@@ -36,9 +36,16 @@ CC=${BUILD_PREFIX}/bin/${HOST}-gcc CXX=$BUILD_PREFIX/bin/${HOST}-g++ \
     -DOTB_USE_SIFTFAST:BOOL=ON \
     -DOTB_USE_SPTW:BOOL=OFF \
     -DOTB_WRAP_PYTHON:BOOL=ON \
-    -DOTB_USE_OPENMP:BOOL=OFF \
+    -DOTB_USE_OPENMP:BOOL=ON \
     -DOTB_USE_SSE_FLAGS:BOOL=ON \
     ..
 
 ninja install -j 4
 
+ACTIVATE_DIR=$PREFIX/etc/conda/activate.d
+DEACTIVATE_DIR=$PREFIX/etc/conda/deactivate.d
+mkdir -p $ACTIVATE_DIR
+mkdir -p $DEACTIVATE_DIR
+
+cp $RECIPE_DIR/scripts/activate.sh $ACTIVATE_DIR/otb-activate.sh
+cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/otb-deactivate.sh

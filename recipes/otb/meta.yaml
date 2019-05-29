@@ -43,6 +43,7 @@ requirements:
     - muparserx
     - opencv=3.4.4
     - openjpeg
+    - openmp
     - openssl
     - openthreads
     - ossim
@@ -79,6 +80,7 @@ requirements:
     - muparserx
     - opencv=3.4.4
     - openjpeg
+    - openmp
     - openssl
     - openthreads
     - ossim
@@ -93,15 +95,14 @@ requirements:
     - numpy
 
 test:
-  requires:
-    - cmake
-    - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
+  imports:
+    - otbApplication
   files:
     - test_data
   commands:
     - test -d $PREFIX/include/OTB*                        # [not win]
     - if not exist %LIBRARY_INC%\\OTB* exit 1             # [win]
+    - otbcli_ReadImageInfo -in test_data/scene.png
 
 about:
   home: https://www.orfeo-toolbox.org/
