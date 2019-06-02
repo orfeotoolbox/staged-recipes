@@ -32,6 +32,7 @@ requirements:
     - hdf5
     - itk=4.13.2
     - jpeg
+    - libboost
     - libitk=4.13.1
     - libgdal=2.4.1
     - libkml
@@ -69,6 +70,7 @@ requirements:
     - hdf5
     - itk=4.13.2
     - jpeg
+    - libboost
     - libitk=4.13.1
     - libgdal=2.4.1
     - libkml
