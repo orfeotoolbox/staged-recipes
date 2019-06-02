@@ -23,6 +23,7 @@ requirements:
   host:
     - blas=2.10=mkl
     - boost
+    - libboost
     - openmp 
 
 test:
