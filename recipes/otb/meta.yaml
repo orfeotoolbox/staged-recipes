@@ -1,4 +1,4 @@
-{% set version = "6.6.2" %}
+{% set version = "develop" %}
 
 package:
   name: otb
@@ -50,7 +50,7 @@ requirements:
     - ossim
     - pcre
     - proj4
-    - shark=3.1.4
+    - shark=4.0.1
     - sqlite
     - swig
     - tinyxml
@@ -111,7 +111,7 @@ about:
   license: Apache 2.0
   license_file: LICENSE
   summary: |
-    Description Orfeo Toolbox
+   Open Source processing of remote sensing images
 
 extra:
   recipe-maintainers:

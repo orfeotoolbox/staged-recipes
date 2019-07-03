@@ -1,4 +1,4 @@
-{% set version = "3.1.4" %}
+{% set version = "4.0.1" %}
 
 package:
   name: shark
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Shark-ML/Shark/archive/v{{ version }}.zip
-  sha256: f01008459bf7ef0c48c2896e20598c90d97d0c6a24fb81c368e26d7d835afc62 
+  sha256: b442d641d84cc5c7051fe9d79e116af33288b8816d1a97b96f774da3a704da6e
   patches:
     - patches/shark-1-disable-hdf5-all.diff
     - patches/shark-2-ext-num-literals-all.diff
