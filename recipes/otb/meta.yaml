@@ -2,7 +2,7 @@
 
 package:
   name: otb
-  version: {{ version }}
+  version: {{ "6.6.X" }}
 
 source:
   git_url: https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb.git
