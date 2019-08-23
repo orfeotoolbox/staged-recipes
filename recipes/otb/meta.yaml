@@ -24,7 +24,7 @@ requirements:
     - curl
     - expat
     - fftw
-    - gdal
+    - conda-forge::gdal
     - geos
     - geotiff
     - gsl 
@@ -34,7 +34,7 @@ requirements:
     - jpeg
     - libboost
     - libitk=4.13.1
-    - libgdal
+    - conda-forge::libgdal
     - libkml
     - libsvm
     - libnetcdf
@@ -56,13 +56,13 @@ requirements:
     - tinyxml
     - zlib
     - python=3.6
-    - numpy
+    - numpy=1.14.6
   run:
     - boost
     - curl
     - expat
     - fftw
-    - gdal
+    - conda-forge::gdal
     - geos
     - geotiff
     - gsl 
@@ -72,7 +72,7 @@ requirements:
     - jpeg
     - libboost
     - libitk=4.13.1
-    - libgdal
+    - conda-forge::libgdal
     - libkml
     - libsvm
     - libnetcdf
@@ -94,7 +94,7 @@ requirements:
     - tinyxml
     - zlib
     - python=3.6
-    - numpy
+    - numpy=1.14.6
 
 test:
   imports:
